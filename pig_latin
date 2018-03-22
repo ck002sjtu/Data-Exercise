@@ -113,30 +113,6 @@ tb15_JoinCity = JOIN employee BY Emp_City_Id LEFT OUTER, city BY City_Id;
 tb15 = FILTER tb15_JoinCity BY SUBSTRING(City_Name,0,1) > 'A' and SUBSTRING(City_Name,0,1) < 'D';
 DUMP tb15;
 
-/* Query 16
-16.	Fetch First name, last name, middle name, Couame, Designation name and DOB within a range (e.g.: 1/2/1984 to 1/3/1986).*/
-
-tb16 = FILTER employee BY Emp_DOB > 
-
-
-
-/* Query 18
-18.	Fetch First name, Last name, middle name, Country name, Designation name and his current salary*/
-
-tb18_JoinSalary   = JOIN employee BY Emp_Id LEFT OUTER , salary BY Emp_Id;
-tb18_group        = GROUP tb18_JoinSalary BY employee::Emp_Id;
-tb18_RecentYearId = Filter tb18_group BY employee::Emp_Salary_Change_Year == '1';
-
-MAX(tb18_group::Emp_Salary_Change_Year);
-DESCRIBE tb18_JoinSalary
-
-
-
-
-
-tb000 = JOIN employee BY Emp_City_Id LEFT OUTER,city BY City_Id;
-tb000 = FOREACH tb000 GENERATE *;
-DUMP tb000;
 
 
 
