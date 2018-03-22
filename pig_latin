@@ -1,0 +1,145 @@
+##################
+
+
+country = load '/home/cloudera/Kyle/Country0.csv' USING CSVLoader(',') AS (field1: int, field2: chararray);
+
+country = load '/home/cloudera/Kyle/data/HRMS_Country.csv' USING PigStorage(',') AS (Country_Id: int, Country_Name: chararray);
+state   = load '/home/cloudera/Kyle/State.csv' USING PigStorage(',') AS (State_Id: int, Country_Id: int,State_Name: chararray);
+city   = load '/home/cloudera/Kyle/City.csv' USING PigStorage(',') AS (City_Id: int, State_Id: int,City_Name: chararray);
+employee   = load '/home/cloudera/Kyle/Employee_Details.csv' USING PigStorage(',') AS (Emp_Id: int, Emp_First_Name: chararray,Emp_Middle_Name:chararray,Emp_Last_Name:chararray,Emp_Address1:chararray,Emp_Address2:chararray,Emp_Country_Id:int,Emp_State_Id:int,Emp_City_Id:int,Emp_Zip:int,Emp_Mobile:int,Emp_Gender:int,Desig_Id:int,Emp_DOB:chararray,Emp_JoinDate:chararray,Emp_Active:int);
+
+salary   = load '/home/cloudera/Kyle/Salary.csv' USING PigStorage(',') AS (Salary_Id: int, Emp_Id: int,Emp_Salary_Change_Year: chararray,Emp_Salary:int);
+
+designation   = load '/home/cloudera/Kyle/Designation.csv' USING PigStorage(',') AS (Desig_Id: int, Desig_Name: chararray,Desig_Description:chararray);
+
+/* Query 1
+ 1.	Select First name, Last name, Address, Country Name (by joining with country table), Sate Name (by joining with state table), City Name (by joining with city table),Mobile, and Designation name (by joining with designation table) of all employees .*/ 
+tb1_tmp1 = JOIN employee BY Emp_Country_Id LEFT OUTER, country BY Country_Id;
+tb1_tmp2 = JOIN tb1_tmp1 BY Emp_State_Id   LEFT OUTER, state   BY State_Id;
+tb1_tmp3 = JOIN tb1_tmp2 BY Emp_City_Id    LEFT OUTER, city    BY City_Id;
+tb1_tmp4 = JOIN tb1_tmp3 BY Desig_Id       LEFT OUTER, designation    BY Desig_Id ;
+tb1      = foreach tb1_tmp4 generate Emp_First_Name,Emp_Last_Name,Emp_Address1,Country_Name,State_Name,City_Name,Emp_Mobile,Desig_Name;
+
+/* Query 2 
+2.	Select state name and country name and sort the records in ascending order with state name.*/
+tb2_tmp1 = JOIN employee BY Emp_Country_Id LEFT OUTER, country BY Country_Id;
+tb2_tmp2 = JOIN tb2_tmp1 BY Emp_State_Id   LEFT OUTER, state   BY State_Id;
+tb2_tmp3 = foreach tb2_tmp2  generate State_Name,Country_Name;
+tb2      = ORDER tb2_tmp3 BY State_Name ASC;
+
+/* Query 3 
+3.	Select first 3 records from country table in ascending order by country name.*/
+tb3_tmp1 = ORDER country BY Country_Name;
+tb3 = LIMIT tb3_tmp1 3;
+DUMP tb3;
+
+
+
+employee   = load '/user/cloudera/Employee_Details.csv' USING PigStorage(',') AS (Emp_Id: int, Emp_First_Name: chararray,Emp_Middle_Name:chararray,Emp_Last_Name:chararray,Emp_Address1:chararray,Emp_Address2:chararray,Emp_Country_Id:int,Emp_State_Id:int,Emp_City_Id:int,Emp_Zip:int,Emp_Mobile:int,Emp_Gender:int,Desig_Id:int,Emp_DOB:chararray,Emp_JoinDate:chararray,Emp_Active:int);
+/* Query 4 
+Select all employees whose first name starts with letter “a”. */
+tb4 = FILTER employee BY (SUBSTRING(Emp_First_Name,0,1)=='C');
+DUMP tb4;
+
+/* Query 5 
+5.  Select all employees whose first name ends with letter “a” */
+
+tb5 = FILTER employee BY (SUBSTRING(Emp_First_Name,(int)SIZE(Emp_First_Name)-1,(int)SIZE(Emp_First_Name))=='a');
+DUMP tb5;
+
+/* Query 6
+6.	Select all employees who are inactive. */
+tb6 = FILTER employee BY Emp_Active == 0;
+DUMP tb6;
+
+/* Query 7
+7.	Select first name, last name, middle name of all employees and change the column names to First Name, Last Name, and Middle Name.*/
+
+tb7 = FOREACH employee GENERATE Emp_First_Name AS First_Name ,Emp_Middle_Name AS Middle_Name, Emp_Last_Name AS Last_Name;
+DUMP tb7;
+
+/* Query 8
+8.	Print total number of employees.*/
+
+tb8_grouped = GROUP employee ALL; 
+tb8 = FOREACH tb8_grouped GENERATE COUNT(employee);
+DUMP tb8;
+
+/* Query 9
+9.	Print total number of employees whose middle name is not null.*/
+
+tb9_filter = FILTER employee BY Emp_Middle_Name != 'NULL';
+tb9_group  = GROUP tb9_filter ALL;
+tb9        = FOREACH tb9_group GENERATE COUNT(tb9_filter);
+DUMP tb9;
+
+/* Query 10
+10.	Select first name, last name, middle name of all employees. If middle name is null change that value to “Not Applicable”.*/
+ 
+tb10        = FOREACH employee GENERATE Emp_First_Name ,(Emp_Middle_Name=='NULL'?'Not Applicable':Emp_Middle_Name), Emp_Last_Name;
+DUMP tb10;
+
+/* Query 11
+11.	Concatenate first name, middle name, last name of all records in employee table and print.*/
+
+tb11        = FOREACH employee GENERATE CONCAT(Emp_First_Name,' ',Emp_Middle_Name,' ',Emp_Last_Name) AS Emp_Name;
+DUMP tb11;
+
+/* Query 12
+12.	Select all records in employee table and order in ascending direction with country name.*/
+
+tb12_joincountry = JOIN employee BY Emp_Country_Id LEFT OUTER, country BY Country_Id;
+tb12_generate = FOREACH tb12_joincountry GENERATE *;
+tb12_order    = ORDER tb12_generate BY Country_Name ASC;
+DUMP tb12_order;     
+
+/* Query 13
+13.	Retrieve first 10 records from employee table and order by their first name in ascending direction.*/
+tb13_ordered = ORDER employee BY Emp_First_Name ASC;
+tb13 = LIMIT tb13_ordered 10;
+DUMP tb13;
+
+/* Query 14
+14.	Select all record from employee who lives in the cities Dallas, Algiers.*/
+
+tb14_JoinCity = JOIN employee BY Emp_City_Id LEFT OUTER, city BY City_Id;
+tb14 = FILTER tb14_JoinCity BY City_Name IN ('Dallas','Algiers');
+DUMP tb14;
+
+/* Query 15
+15.	Select all employees who lives in the cities that starts with the letter s between A and D.*/
+
+tb15_JoinCity = JOIN employee BY Emp_City_Id LEFT OUTER, city BY City_Id;
+tb15 = FILTER tb15_JoinCity BY SUBSTRING(City_Name,0,1) > 'A' and SUBSTRING(City_Name,0,1) < 'D';
+DUMP tb15;
+
+/* Query 16
+16.	Fetch First name, last name, middle name, Couame, Designation name and DOB within a range (e.g.: 1/2/1984 to 1/3/1986).*/
+
+tb16 = FILTER employee BY Emp_DOB > 
+
+
+
+/* Query 18
+18.	Fetch First name, Last name, middle name, Country name, Designation name and his current salary*/
+
+tb18_JoinSalary   = JOIN employee BY Emp_Id LEFT OUTER , salary BY Emp_Id;
+tb18_group        = GROUP tb18_JoinSalary BY employee::Emp_Id;
+tb18_RecentYearId = Filter tb18_group BY employee::Emp_Salary_Change_Year == '1';
+
+MAX(tb18_group::Emp_Salary_Change_Year);
+DESCRIBE tb18_JoinSalary
+
+
+
+
+
+tb000 = JOIN employee BY Emp_City_Id LEFT OUTER,city BY City_Id;
+tb000 = FOREACH tb000 GENERATE *;
+DUMP tb000;
+
+
+
+
+
+

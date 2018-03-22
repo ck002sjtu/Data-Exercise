@@ -1,0 +1,852 @@
+##mongodb
+use HRMS_db
+db.createCollection('HRMS_Country');
+db.HRMS_Country.insert([
+	{
+	country_id   : 1,
+	country_name : 'Afghanistan'
+	},
+	{
+	country_id   : 2,
+	country_name : 'Albania'	
+	},
+	{
+	country_id   : 3,
+	country_name : 'Algeria'	
+	},
+	{
+	country_id   : 4,
+	country_name : 'Andorra'	
+	},
+	{
+	country_id   : 5,
+	country_name : 'Australia'
+	},
+	{
+	country_id   : 6,
+	country_name : 'Austria'
+	},
+	{
+	country_id   : 7,
+	country_name : 'Brazil'
+	},
+	{
+	country_id   : 8,
+	country_name : 'Bangladesh'
+	},
+	{
+	country_id   : 9,
+	country_name : 'China'
+	},
+	{
+	country_id   : 10,
+	country_name : 'Chile'
+	},
+	{
+	country_id   : 11,
+	country_name : 'Denmark'
+	},
+	{
+	country_id   : 12,
+	country_name : 'Egypt'
+	},
+	{
+	country_id   : 13,
+	country_name : 'Ethiopia'
+	},
+	{
+	country_id   : 14,
+	country_name : 'France'
+	},
+	{
+	country_id   : 15,
+	country_name : 'Finland'
+	},
+	{
+	country_id   : 16,
+	country_name : 'Germany'
+	},
+	{
+	country_id   : 17,
+	country_name : 'Georgia'
+	},
+	{
+	country_id   : 18,
+	country_name : 'Greece'
+	},
+	{
+	country_id   : 19,
+	country_name : 'Hong Kong'
+	},
+	{
+	country_id   : 20,
+	country_name : 'Hungary'
+	},
+	{
+	country_id   : 21,
+	country_name : 'India'
+	},
+	{
+	country_id   : 22,
+	country_name : 'Ireland'
+	},
+	{
+	country_id   : 23,
+	country_name : 'Japan'
+	},
+	{
+	country_id   : 24,
+	country_name : 'Kuwait'
+	},
+	{
+	country_id   : 25,
+	country_name : 'Kenya'
+	},
+	{
+	country_id   : 26,
+	country_name : 'Luxembourg'
+	},
+	{
+	country_id   : 27,
+	country_name : 'Mexico'
+	},
+	{
+	country_id   : 28,
+	country_name : 'Nepal'
+	},
+	{
+	country_id   : 29,
+	country_name : 'Oman'
+	},
+	{
+	country_id   : 30,
+	country_name : 'Poland'
+	},
+	{
+	country_id   : 31,
+	country_name : 'Qatar'
+	},
+	{
+	country_id   : 32,
+	country_name : 'Russia'
+	},
+	{
+	country_id   : 33,
+	country_name : 'South Africa'
+	},
+	{
+	country_id   : 34,
+	country_name : 'Switzerland'
+	},
+	{
+	country_id   : 35,
+	country_name : 'Syria'
+	},
+	{
+	country_id   : 36,
+	country_name : 'Thailand'
+	},
+	{
+	country_id   : 37,
+	country_name : 'United States'
+	},
+	{
+	country_id   : 38,
+	country_name : 'Uganda'
+	},
+	{
+	country_id   : 39,
+	country_name : 'Vietnam'
+	},
+	{
+	country_id   : 40,
+	country_name : 'Yemen'
+	},
+	{
+	country_id   : 41,
+	country_name : 'Zimbabwe'
+	}
+]);
+
+db.createCollection('HRMS_State');
+db.HRMS_State.insert([
+	{
+	state_id   : 1,
+	country_id : 1,
+	state_name : 'Badakhshan'
+	},
+	{
+	state_id   : 2,
+	country_id : 1,
+	state_name : 'Badghis'
+	},
+	{
+	state_id   : 3,
+	country_id : 1,
+	state_name : 'Baghlan'
+	},
+	{
+	state_id   : 4,
+	country_id : 2,
+	state_name : 'Berat'
+	},
+	{
+	state_id   : 5,
+	country_id : 2,
+	state_name : 'Diber'
+	},
+	{
+	state_id   : 6,
+	country_id : 2,
+	state_name : 'Durres'
+	},
+	{
+	state_id   : 7,
+	country_id : 3,
+	state_name : 'Adrar'
+	},
+	{
+	state_id   : 8,
+	country_id : 3,
+	state_name : 'Blida'
+	},
+	{
+	state_id   : 9,
+	country_id : 3,
+	state_name : 'Tipaza'
+	},
+	{
+	state_id   : 10,
+	country_id : 4,
+	state_name : 'Canillo'
+	},
+	{
+	state_id   : 11,
+	country_id : 4,
+	state_name : 'Ordino'
+	},
+	{
+	state_id   : 12,
+	country_id : 5,
+	state_name : 'Tasmania'
+	},
+	{
+	state_id   : 13,
+	country_id : 5,
+	state_name : 'Victoria'
+	},
+	{
+	state_id   : 14,
+	country_id : 6,
+	state_name : 'Burgenland'
+	},
+	{
+	state_id   : 15,
+	country_id : 6,
+	state_name : 'Tirol'
+	},
+	{
+	state_id   : 16,
+	country_id : 7,
+	state_name : 'Bahia'
+	},
+	{
+	state_id   : 17,
+	country_id : 7,
+	state_name : 'Roraima'
+	},
+	{
+	state_id   : 18,
+	country_id : 8,
+	state_name : 'Dhaka'
+	},
+	{
+	state_id   : 19,
+	country_id : 9,
+	state_name : 'Jilin'
+	},
+	{
+	state_id   : 20,
+	country_id : 10,
+	state_name : 'Atacama'
+	},
+	{
+	state_id   : 21,
+	country_id : 11,
+	state_name : 'Capital'
+	},
+	{
+	state_id   : 22,
+	country_id : 12,
+	state_name : 'Suhaj'
+	},
+	{
+	state_id   : 23,
+	country_id : 13,
+	state_name : 'Tigray'
+	},
+	{
+	state_id   : 24,
+	country_id : 14,
+	state_name : 'Auvergne'
+	},
+	{
+	state_id   : 25,
+	country_id : 15,
+	state_name : 'South Savo'
+	},
+	{
+	state_id   : 26,
+	country_id : 16,
+	state_name : 'Bremen'
+	},
+	{
+	state_id   : 27,
+	country_id : 17,
+	state_name : 'Ajaria'
+	},
+	{
+	state_id   : 28,
+	country_id : 18,
+	state_name : 'Crete'
+	},
+	{
+	state_id   : 29,
+	country_id : 19,
+	state_name : 'Eastern District'
+	},
+	{
+	state_id   : 30,
+	country_id : 20,
+	state_name : 'BaranyaMegye'
+	},
+	{
+	state_id   : 31,
+	country_id : 21,
+	state_name : 'Kerala'
+	},
+	{
+	state_id   : 32,
+	country_id : 22,
+	state_name : 'Cavan'
+	},
+	{
+	state_id   : 33,
+	country_id : 23,
+	state_name : 'Akita'
+	},
+	{
+	state_id   : 34,
+	country_id : 24,
+	state_name : 'Hawalli'
+	},
+	{
+	state_id   : 35,
+	country_id : 25,
+	state_name : 'Central'
+	},
+	{
+	state_id   : 36,
+	country_id : 26,
+	state_name : 'Diekirch'
+	},
+	{
+	state_id   : 37,
+	country_id : 27,
+	state_name : 'Colima'
+	},
+	{
+	state_id   : 38,
+	country_id : 28,
+	state_name : 'Eastern'
+	},
+	{
+	state_id   : 39,
+	country_id : 29,
+	state_name : 'Dhofar'
+	},
+	{
+	state_id   : 40,
+	country_id : 30,
+	state_name : 'Lodzkie'
+	},
+	{
+	state_id   : 41,
+	country_id : 31,
+	state_name : 'Al Khawr'
+	},
+	{
+	state_id   : 42,
+	country_id : 32,
+	state_name : 'Altay'
+	},
+	{
+	state_id   : 43,
+	country_id : 33,
+	state_name : 'Free State'
+	},
+	{
+	state_id   : 44,
+	country_id : 34,
+	state_name : 'Bern'
+	},
+	{
+	state_id   : 45,
+	country_id : 35,
+	state_name : 'Idlib'
+	},
+	{
+	state_id   : 46,
+	country_id : 36,
+	state_name : 'Chai Nat'
+	},
+	{
+	state_id   : 47,
+	country_id : 37,
+	state_name : 'Alaska'
+	},
+	{
+	state_id   : 48,
+	country_id : 37,
+	state_name : 'Texas'
+	},
+	{
+	state_id   : 49,
+	country_id : 37,
+	state_name : 'New York'
+	},
+	{
+	state_id   : 50,
+	country_id : 37,
+	state_name : 'California'
+	},
+	{
+	state_id   : 51,
+	country_id : 38,
+	state_name : 'Abim'
+	},
+	{
+	state_id   : 52,
+	country_id : 39,
+	state_name : 'Bac Can'
+	},
+	{
+	state_id   : 53,
+	country_id : 40,
+	state_name : 'Ataq'
+	},
+	{
+	state_id   : 54,
+	country_id : 41,
+	state_name : 'Bulawayo'
+	},
+	{
+	state_id   : 56,
+	country_id : 37,
+	state_name :  'New Jersey'
+	},
+])
+
+db.createCollection('HRMS_City');
+db.HRMS_City.insert([
+	{
+	city_id   : 1,
+	state_id  : 1, 
+	city_name :  'Jurm'
+	},
+	{
+	city_id   : 2,
+	state_id  : 2,
+	city_name : 'Abbakhsh'
+	},
+	{
+	city_id   : 3,
+	state_id  : 3,
+	city_name : 'Baglan'
+	},
+	{
+	city_id   : 4,
+	state_id : 4,
+	city_name :  'Berat'
+	},
+	{
+	city_id   : 5,
+	state_id : 5,
+	city_name : 'Burrel' 
+	},
+	{
+	city_id   : 6,
+	state_id : 6,
+	city_name : 'Durres' 
+	},
+	{
+	city_id   : 7,
+	state_id : 7,
+	city_name : 'Algiers' 
+	},
+	{
+	city_id   : 8,
+	state_id : 8,
+	city_name : 'Amsthas' 
+	},
+	{
+	city_id   : 9,
+	state_id : 9,
+	city_name : 'Aboucha' 
+	},
+	{
+	city_id   : 10,
+	state_id : 10,
+	city_name :  'Canillo'
+	},
+	{
+	city_id   : 11,
+	state_id : 11,
+	city_name :  'Ordino'
+	},
+	{
+	city_id   : 12,
+	state_id : 12,
+	city_name :  'Hobart'
+	},
+	{
+	city_id   : 13,
+	state_id  : 13,
+	city_name : 'Melbourne'
+	},
+	{
+	city_id   : 14,
+	state_id  : 14,
+	city_name :  'Eisenstadt'
+	},
+	{
+	city_id   : 15,
+	state_id : 47,
+	city_name :  'Anchorage'
+	},
+	{
+	city_id   : 16,
+	state_id : 47,
+	city_name : 'Fairbanks' 
+	},
+	{
+	city_id   : 17,
+	state_id : 47,
+	city_name :  'College'
+	},
+	{
+	city_id   : 18,
+	state_id : 47,
+	city_name :  'Kodiak'
+	},
+	{
+	city_id   : 19,
+	state_id : 47,
+	city_name :  'Meadow Lakes'
+	},
+	{
+	city_id   : 20,
+	state_id : 48,
+	city_name : 'Houston'
+	},
+	{
+	city_id   : 21,
+	state_id : 48,
+	city_name : 'Dallas'
+	},
+	{
+	city_id   : 22,
+	state_id : 48,
+	city_name :  'Austin'
+	}
+])
+
+db.createCollection('HRMS_Designation');
+db.HRMS_Designation.insert([
+	{
+	desig_id   : 1,
+	desig_name : 'Project Manager',
+	desig_description  :'Project Manager'
+	},
+	{
+	desig_id   : 2,
+	desig_name : 'Software Developer',
+	desig_description  : 'Software Developer'
+	},
+	{
+	desig_id   : 3,
+	desig_name : 'Team Leader',
+	desig_description  : 'Team Leader'
+	},
+	{
+	desig_id   : 4,
+	desig_name : 'Business Analyst',
+	desig_description  : 'Business Analyst'
+	},
+	{
+	desig_id   : 5,
+	desig_name : 'Design Engineer',
+	desig_description  : 'Design Engineer'
+	},
+	{
+	desig_id   : 6,
+	desig_name : 'Tech Lead',
+	desig_description  : 'Tech Lead'
+	}
+])
+
+db.createCollection('HRMS_Employee_Details');
+db.HRMS_Employee_Details.insert([
+	{
+	emp_id         : 1,
+	emp_first_name : 'Ronaldo',
+	emp_middle_name: 'Rome',
+	emp_last_name  : 'Fabrizzio',
+	emp_address1   : '75 Calle Suerte',
+	emp_address2   : 'NULL',
+	emp_country_id : 2,
+	emp_state_id   : 7,
+	emp_city_id    : 4,
+	emp_zip        : 10034,
+	emp_mobile     : 1317778395,
+	emp_gender     : 1,
+	desig_id       : 4,
+	emp_dob        : '1978-05-12 00:00:00.000',
+	emp_joindate   : '2012-03-22 00:00:00.000',
+	emp_active     : 1
+	},
+	{
+	emp_id         : 2,
+	emp_first_name : 'Joshua',
+	emp_middle_name: 'NULL',
+	emp_last_name  : 'Kan',
+	emp_address1   : '533 Kosher Drive',
+	emp_address2   : 'NULL',
+	emp_country_id : 11,
+	emp_state_id   : 34,
+	emp_city_id    : 54,
+	emp_zip        : 3115,
+	emp_mobile     : 8553432022,
+	emp_gender     : 1,
+	desig_id       : 2,
+	emp_dob        : '1986-08-01 00:00:00.000',
+	emp_joindate   : '2010-01-27 00:00:00.000',
+	emp_active     : 1
+	},
+	{
+	emp_id         : 3,
+	emp_first_name : 'Yuriana',
+	emp_middle_name: 'NULL',
+	emp_last_name  : 'Hagasawa',
+	emp_address1   : '122 Kobeya Ave',
+	emp_address2   : 'NULL',
+	emp_country_id : 9,
+	emp_state_id   : 12,
+	emp_city_id    : 27,
+	emp_zip        : 84430,
+	emp_mobile     : 6644227722,
+	emp_gender     : 0,
+	desig_id       : 1,
+	emp_dob        : '1988-12-13 00:00:00.000',
+	emp_joindate   : '2013-09-01 00:00:00.000',
+	emp_active     : 0
+	},
+	{
+	emp_id         : 4,
+	emp_first_name : 'Venessa',
+	emp_middle_name: 'Cameron',
+	emp_last_name  : 'Katarina',
+	emp_address1   : '1001 Michigan Ave Apt3201',
+	emp_address2   : 'NULL',
+	emp_country_id : 11,
+	emp_state_id   : 28,
+	emp_city_id    : 38,
+	emp_zip        : 1101,
+	emp_mobile     : 8572222210,
+	emp_gender     : 0,
+	desig_id       : 6,
+	emp_dob        : '1987-11-01 00:00:00.000',
+	emp_joindate   : '2009-02-01 00:00:00.000',
+	emp_active     : 1
+	},
+	{
+	emp_id         : 5,
+	emp_first_name : 'Sahi',
+	emp_middle_name: 'NULL',
+	emp_last_name  : 'King',
+	emp_address1   : '15 Gibbs Street Apt1',
+	emp_address2   : 'NULL',
+	emp_country_id : 11,
+	emp_state_id   : 29,
+	emp_city_id    : 39,
+	emp_zip        : 2215,
+	emp_mobile     : 6173338992,
+	emp_gender     : 1,
+	desig_id       : 5,
+	emp_dob        : '1977-10-19 00:00:00.000',
+	emp_joindate   : '1999-03-01 00:00:00.000',
+	emp_active     : 1
+	},
+	{
+	emp_id         : 6,
+	emp_first_name : 'Chen',
+	emp_middle_name: 'NULL',
+	emp_last_name  : 'Chen',
+	emp_address1   : '55 Beijing Road Apt1501	230',
+	emp_address2   : 'Sanjiangkou Road Apt202',
+	emp_country_id : 4,
+	emp_state_id   : 9,
+	emp_city_id    : 8,
+	emp_zip        : 20033,
+	emp_mobile     : 1988883321,
+	emp_gender     : 0,
+	desig_id       : 1,
+	emp_dob        : '1982-08-20 00:00:00.000',
+	emp_joindate   : '2006-10-01 00:00:00.000',
+	emp_active     : 1
+	},
+	{
+	emp_id         : 10002,
+	emp_first_name : 'Ricky',
+	emp_middle_name: 'Russel',
+	emp_last_name  : 'Riverland',
+	emp_address1   : '1019 Commonwealth Ave Apt301',
+	emp_address2   : 'NULL',
+	emp_country_id : 11,
+	emp_state_id   : 29,
+	emp_city_id    : 39,
+	emp_zip        : 2215,
+	emp_mobile     : 8572223333,
+	emp_gender     : 1,
+	desig_id       : 3,
+	emp_dob        : '1993-01-01 00:00:00.000',
+	emp_joindate   : '2014-05-01 00:00:00.000',
+	emp_active     : 1
+	}
+])
+
+db.createCollection('HRMS_Salary');
+db.HRMS_Salary.insert([
+	{
+	Salary_Id : 2 ,
+	Emp_Id    : 1 ,
+	Emp_Salary_Change_Year : '2000-01-10 00:00:00.000' ,
+	Emp_Salary             : 65000.00
+	},
+	{
+	Salary_Id :  3,
+	Emp_Id    :  1,
+	Emp_Salary_Change_Year : '2005-02-20 00:00:00.000' ,
+	Emp_Salary             :  75000.00
+	},
+	{
+	Salary_Id :  4,
+	Emp_Id    :  1,
+	Emp_Salary_Change_Year :  '2010-01-03 00:00:00.000',
+	Emp_Salary             :  85000.00
+	},
+	{
+	Salary_Id :  5,
+	Emp_Id    :  2,
+	Emp_Salary_Change_Year :  '2005-01-01 00:00:00.000',
+	Emp_Salary             :  35000.00
+	},
+	{
+	Salary_Id :  6,
+	Emp_Id    :  2,
+	Emp_Salary_Change_Year :  '2006-01-01 00:00:00.000',
+	Emp_Salary             :  40000.00
+	},
+	{
+	Salary_Id :  7,
+	Emp_Id    :  2,
+	Emp_Salary_Change_Year :  '2011-01-01 00:00:00.000',
+	Emp_Salary             :  90000.00
+	},
+	{
+	Salary_Id :  8,
+	Emp_Id    :  3,
+	Emp_Salary_Change_Year :  '2005-10-10 00:00:00.000',
+	Emp_Salary             :  28000.00
+	},
+	{
+	Salary_Id :  9,
+	Emp_Id    :  3,
+	Emp_Salary_Change_Year :  '2008-09-10 00:00:00.000',
+	Emp_Salary             :  56000.00
+	},
+	{
+	Salary_Id :  10,
+	Emp_Id    :  4,
+	Emp_Salary_Change_Year :  '2000-06-09 00:00:00.000',
+	Emp_Salary             :  105000.00
+	},
+	{
+	Salary_Id :  11,
+	Emp_Id    :  4,
+	Emp_Salary_Change_Year :  '2002-07-01 00:00:00.000',
+	Emp_Salary             :  185000.00
+	},
+	{
+	Salary_Id :  12,
+	Emp_Id    :  5,
+	Emp_Salary_Change_Year :  '2001-01-01 00:00:00.000',
+	Emp_Salary             :  78500.00
+	},
+	{
+	Salary_Id :  13,
+	Emp_Id    :  5,
+	Emp_Salary_Change_Year :  '2002-01-01 00:00:00.000',
+	Emp_Salary             :  89200.00
+	},
+	{
+	Salary_Id :  14,
+	Emp_Id    :  5,
+	Emp_Salary_Change_Year :  '2003-01-01 00:00:00.000',
+	Emp_Salary             :  115500.00
+	},
+	{
+	Salary_Id :  15,
+	Emp_Id    :  5,
+	Emp_Salary_Change_Year :  '2005-01-01 00:00:00.000',
+	Emp_Salary             :  156000.00
+	},
+	{
+	Salary_Id :  16,
+	Emp_Id    :  6,
+	Emp_Salary_Change_Year :  '2006-01-01 00:00:00.000',
+	Emp_Salary             :  67000.00
+	},
+	{
+	Salary_Id :  17,
+	Emp_Id    :  6,
+	Emp_Salary_Change_Year :  '2009-01-01 00:00:00.000',
+	Emp_Salary             : 76000.00
+	},
+])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
